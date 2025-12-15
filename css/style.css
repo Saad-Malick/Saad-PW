@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap');
 /* Reset default browser spacing */
 * {
     margin: 0;
@@ -6,9 +7,13 @@
 }
 
 body {
-    background-color: #000; /* Dark mode base */
-    color: white;
-    font-family: sans-serif;
+    background-color: #050505; /* Dark mode base */
+    color: #ffffff;
+    font-family: 'Inter' , sans-serif;
+}
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif; /* Bold headers */
+    letter-spacing: -0.5px; /* Tighter letters look more professional */
 }
 
 /* The Grid Container - UPDATED */
@@ -29,22 +34,56 @@ body {
     gap: 15px; /* Increased gap looks better when centered */
 }
 
-/* Common Item Styles */
+/* Base Glass Style */
 .bento-item {
     position: relative;
-    display: block; /* Makes link act like a box */
+    display: block;
     overflow: hidden;
     text-decoration: none;
     color: white;
-    background-color: #222; /* Fallback color */
-    border-radius: 12px;
-    transition: transform 0.3s ease; /* Smooth hover effect */
+    
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle white tint */
+    backdrop-filter: blur(10px); /* Blurs whatever is behind it */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Thin border */
+    border-radius: 16px; /* Smooth curves */
+    
+    /* The Transition Setup */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy movement */
 }
 
+/* Departmental Colors (The "Calculated" part) */
+/* Item 1 (Alpha/Red) is handled by the video, so we leave it */
+
+/* Item 2: Beta (Blue) */
+.item-2 {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(0, 100, 255, 0.1));
+}
+
+/* Item 3: Gamma (Green) */
+.item-3 {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(0, 255, 100, 0.1));
+}
+
+/* Item 4: Delta (Purple) */
+.item-4 {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(150, 0, 255, 0.1));
+}
+
+
+
+/* Hover and Click Effects */
+/* The Interaction */
 .bento-item:hover {
-    transform: scale(0.98); /* Slight shrink on click/hover */
+    transform: scale(1.02) translateY(-5px); /* Grows and floats up */
+    border-color: rgba(255, 255, 255, 0.4); /* Border gets brighter */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); /* Adds a deep shadow */
 }
 
+/* Specific Glows on Hover */
+.item-2:hover { box-shadow: 0 10px 30px -10px rgba(0, 100, 255, 0.3); } /* Blue Glow */
+.item-3:hover { box-shadow: 0 10px 30px -10px rgba(0, 255, 100, 0.3); } /* Green Glow */
+.item-4:hover { box-shadow: 0 10px 30px -10px rgba(150, 0, 255, 0.3); } /* Purple Glow */
 /* Grid Positioning */
 .item-1 { grid-column: 1; grid-row: 1 / span 2; }
 .item-2 { grid-column: 2; grid-row: 1 / span 2; }
