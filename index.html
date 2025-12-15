@@ -8,55 +8,82 @@
 </head>
 <body>
 
-    <div class="bento-container">
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="assets/videos/clear.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div> <div class="main-wrapper">
+
+        <div class="bento-container">
+            
+            <a href="projects/alpha.html" class="bento-item item-1">
+                <div class="content">
+                    <h3>Project Alpha</h3>
+                    <p>Cricket Analysis</p>
+                </div>
+            </a>
+
+            <a href="projects/beta.html" class="bento-item item-2">
+                <div class="content">
+                    <h3>Project Beta</h3>
+                </div>
+            </a>
+
+            <a href="projects/gamma.html" class="bento-item item-3">
+                <div class="content">
+                    <h3>Project Gamma</h3>
+                </div>
+            </a>
+
+            <a href="projects/delta.html" class="bento-item item-4">
+                <div class="content">
+                    <h3>Project Delta</h3>
+                </div>
+            </a>
+        </div> 
+
+        <section class="writing-section">
+            <h2 style="color: white; margin-bottom: 20px;">My Written Pieces</h2>
+            
+            <a href="sq/Stories/Wattpad/Benaam.html" class="story-card protected-text">
+                <div class="story-content">
+                    <h3>The Silent Echo</h3>
+                    <p>The rain didn't just fall; it whispered secrets to the pavement...</p>
+                </div>
+                <div class="read-more">Read Piece →</div>
+            </a>
+
+            <a href="sq/Quotes/NHIE.html" class="story-card protected-text">
+                <div class="story-content">
+                    <h3>Midnight in Lucknow</h3>
+                    <p>The shadows stretched longer than the minarets...</p>
+                </div>
+                <div class="read-more">Read Piece →</div>
+            </a>
+        </section>
+
+    </div>
+
+    <script>
+        // List your video files here
+        const videos = [
+            "assets/videos/clear.mp4",
+            "assets/videos/video2.mp4", // Add your second video here
+            "assets/videos/video3.mp4"  // Add your third video here
+        ];
+
+        let currentVideo = 0;
+        const videoElement = document.getElementById('bg-video');
+
+        // When one video ends, play the next one
+        videoElement.addEventListener('ended', () => {
+            currentVideo = (currentVideo + 1) % videos.length; // Loop back to start
+            videoElement.src = videos[currentVideo];
+            videoElement.play();
+        });
         
-        <a href="projects/alpha.html" class="bento-item item-1">
-            <video class="bg-video" autoplay muted loop playsinline>
-                <source src="assets/videos/clear.mp4" type="video/mp4">
-            </video>
-            <div class="content">
-                <h3>Project Alpha</h3>
-                <p>Cricket Analysis</p>
-            </div>
-        </a>
-
-        <a href="projects/beta.html" class="bento-item item-2">
-            <div class="content">
-                <h3>Project Beta</h3>
-            </div>
-        </a>
-
-        <a href="projects/gamma.html" class="bento-item item-3">
-            <div class="content">
-                <h3>Project Gamma</h3>
-            </div>
-        </a>
-
-        <a href="projects/delta.html" class="bento-item item-4">
-            <div class="content">
-                <h3>Project Delta</h3>
-            </div>
-        </a>
-
-    </div> 
-    <section class="writing-section">
-        <h2>My Written Pieces</h2>
-        
-        <div class="story-card protected-text">
-            <h3>The Silent Echo</h3>
-            <p>
-                The rain didn't just fall; it whispered secrets to the pavement. 
-                (This is a sample of your story text.)
-            </p>
-        </div>
-
-        <div class="story-card protected-text">
-            <h3>Midnight in Lucknow</h3>
-            <p>
-                The shadows stretched longer than the minarets...
-            </p>
-        </div>
-    </section>
+        // Note: Since 'loop' is on in HTML, it will loop the SAME video. 
+        // If you want to cycle different videos, remove the 'loop' attribute in HTML above.
+    </script>
 
 </body>
 </html>

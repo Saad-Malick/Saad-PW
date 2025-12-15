@@ -34,7 +34,8 @@ h1, h2, h3 {
     gap: 15px; /* Increased gap looks better when centered */
 }
 
-/* Base Glass Style */
+/* UPDATED: Glass Base Style for All Items */
+
 .bento-item {
     position: relative;
     display: block;
@@ -42,34 +43,34 @@ h1, h2, h3 {
     text-decoration: none;
     color: white;
     
-    /* Glass Effect */
-    background: rgba(255, 255, 255, 0.05); /* Very subtle white tint */
-    backdrop-filter: blur(10px); /* Blurs whatever is behind it */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Thin border */
-    border-radius: 16px; /* Smooth curves */
+    /* THE NEW GLASS EFFECT */
+    background: rgba(255, 255, 255, 0.05); /* Extremely clear glass */
+    backdrop-filter: blur(8px); /* Blurs the video behind the box */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin frost border */
+    border-radius: 12px;
     
-    /* The Transition Setup */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy movement */
+    /* Animation & Layout */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Departmental Colors (The "Calculated" part) */
 /* Item 1 (Alpha/Red) is handled by the video, so we leave it */
 
-/* Item 2: Beta (Blue) */
-.item-2 {
-    background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(0, 100, 255, 0.1));
+/* UPDATED: Faint Tints (Letting the video show through) */
+
+/* Item 1 is handled by its own content or defaults to the clear glass above */
+
+.item-2 { 
+    background: rgba(0, 100, 255, 0.1); /* Faint Blue Tint */
 }
 
-/* Item 3: Gamma (Green) */
-.item-3 {
-    background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(0, 255, 100, 0.1));
+.item-3 { 
+    background: rgba(0, 255, 100, 0.1); /* Faint Green Tint */
 }
 
-/* Item 4: Delta (Purple) */
-.item-4 {
-    background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(150, 0, 255, 0.1));
+.item-4 { 
+    background: rgba(150, 0, 255, 0.1); /* Faint Purple Tint */
 }
-
 
 
 /* Hover and Click Effects */
@@ -91,16 +92,31 @@ h1, h2, h3 {
 .item-4 { grid-column: 3; grid-row: 2; }
 
 /* Video Background Magic */
-.bg-video {
-    position: absolute;
+/* --- FULL PAGE VIDEO BACKGROUND --- */
+#bg-video {
+    position: fixed; /* Sticks to the screen */
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2; /* Puts it way back */
+    object-fit: cover; /* Ensures no black bars */
+}
+
+/* Optional: Dark Overlay so text is readable on bright videos */
+.video-overlay {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures video covers the whole box */
-    z-index: 1;
-    opacity: 0.5; /* Dim video so text is readable */
+    background: rgba(0, 0, 0, 0.6); /* Adjust 0.6 to make it darker/lighter */
+    z-index: -1;
 }
+
+/* --- TRANSPARENT BENTO ITEMS --- */
+/* We update this so the video shines through the boxes */
+
 
 /* Content Positioning */
 .content {
@@ -129,12 +145,61 @@ h1, h2, h3 {
     padding: 20px;
     color: #eee;
 }
+/* --- Writer's Section Styling --- */
+
+.writing-section {
+    max-width: 1100px; /* Matches the bento grid width */
+    margin: 50px auto;
+    padding: 0 10px; /* Aligns with grid padding */
+}
 
 .story-card {
-    background-color: #1a1a1a;
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    line-height: 1.6; /* Makes reading easier */
-    border-left: 4px solid #ffadad; /* Adds a nice accent color */
+    /* Layout */
+    display: flex;
+    justify-content: space-between; /* Pushes "Read More" to the right */
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 25px;
+    
+    /* The "Writer's Glass" Look */
+    background: rgba(255, 255, 255, 0.03); /* Slightly darker than projects */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    
+    /* Text Styles */
+    color: #ccc; /* Softer text for reading */
+    text-decoration: none;
+    
+    /* Animation setup */
+    transition: all 0.3s ease;
+    border-left: 4px solid #ffca3a; /* Gold Accent for Writing */
+}
+
+.story-card h3 {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.read-more {
+    font-size: 0.9rem;
+    color: #ffca3a; /* Match the accent */
+    font-weight: 600;
+    opacity: 0; /* Hidden by default */
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+/* --- The Hover Interaction --- */
+
+.story-card:hover {
+    background: linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(255, 202, 58, 0.05));
+    transform: translateX(5px); /* Slides slightly to the right */
+    border-color: rgba(255, 202, 58, 0.3);
+}
+
+.story-card:hover .read-more {
+    opacity: 1; /* Show the arrow */
+    transform: translateX(0); /* Slide it into place */
 }
