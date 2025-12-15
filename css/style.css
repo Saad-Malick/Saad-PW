@@ -11,16 +11,22 @@ body {
     font-family: sans-serif;
 }
 
-/* The Grid Container */
+/* The Grid Container - UPDATED */
 .bento-container {
     display: grid;
-    height: 100vh; /* Full screen height */
-    /* Columns: 50% | 20% | 30% (remaining) */
+    /* 1. Squeeze it: Restrict the width */
+    max-width: 1100px; 
+    width: 90%; /* Keeps it responsive on smaller screens */
+    
+    /* 2. Center it: Top/Bottom margin 50px, Left/Right auto */
+    margin: 50px auto; 
+    
+    /* 3. Adjust Height: auto lets it grow if content grows, or stick to fixed */
+    height: 600px; /* Fixed height keeps the bento look clean */
+    
     grid-template-columns: 50% 20% 30%;
-    /* Rows: Two equal halves */
     grid-template-rows: 1fr 1fr;
-    gap: 10px;
-    padding: 10px;
+    gap: 15px; /* Increased gap looks better when centered */
 }
 
 /* Common Item Styles */
@@ -66,4 +72,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Pushes text to bottom */
+}
+
+
+/* The "Glass Case" - Prevents Text Selection */
+.protected-text {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    cursor: default; /* Keeps the mouse pointer from changing to a text bar */
+}
+/* Writer's Portfolio Styling */
+.writing-section {
+    max-width: 800px; /* Reading width should be narrower for comfort */
+    margin: 50px auto; /* Center it below the bento */
+    padding: 20px;
+    color: #eee;
+}
+
+.story-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    line-height: 1.6; /* Makes reading easier */
+    border-left: 4px solid #ffadad; /* Adds a nice accent color */
 }
