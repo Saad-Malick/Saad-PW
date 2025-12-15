@@ -16,6 +16,111 @@ h1, h2, h3 {
     letter-spacing: -0.5px; /* Tighter letters look more professional */
 }
 
+/* --- HERO SECTION LAYOUT --- */
+.hero-section {
+    max-width: 1100px;
+    margin: 80px auto 40px auto; /* Spacing from top */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; /* Pushes Title left, Bio right */
+    align-items: flex-end; /* Aligns them at the bottom */
+    flex-wrap: wrap; /* Wraps on mobile */
+    gap: 40px;
+}
+
+/* --- THE TITLE (Massive) --- */
+.title-block h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 8rem; /* HUGE text */
+    line-height: 0.9;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -5px;
+    margin: 0;
+    
+    /* The "Glitch" Shadow effect */
+    text-shadow: 4px 4px 0px rgba(0, 100, 255, 0.4); 
+}
+
+.role-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #ccc;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* --- THE ABOUT DOSSIER (LinkedIn but Cool) --- */
+.about-dossier {
+    flex: 1; /* Takes available space */
+    min-width: 300px; /* Won't get too squished */
+    max-width: 450px;
+    
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ffffff; /* Stark white accent */
+    padding: 25px;
+    border-radius: 4px; /* Sharper corners for a "technical" feel */
+}
+
+.dossier-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #00ff66; /* Matrix Green for status */
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff66;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff66; /* Glowing dot */
+}
+
+.about-dossier p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* Links that look like terminal commands */
+.dossier-links a {
+    display: inline-block;
+    margin-right: 15px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: #ffadad; /* Uses your Alpha Red */
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.dossier-links a:hover {
+    border-bottom: 1px solid #ffadad;
+    letter-spacing: 1px; /* Expands on hover */
+}
+
+/* --- MOBILE TWEAK --- */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column; /* Stack them on phone */
+        align-items: flex-start;
+        margin-top: 40px;
+    }
+    .title-block h1 {
+        font-size: 5rem; /* Smaller on phone */
+    }
+}
+
 /* The Grid Container - UPDATED */
 .bento-container {
     display: grid;
@@ -52,7 +157,7 @@ h1, h2, h3 {
     /* Animation & Layout */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
+ 
 /* Departmental Colors (The "Calculated" part) */
 /* Item 1 (Alpha/Red) is handled by the video, so we leave it */
 
