@@ -18,7 +18,23 @@
         <h1 class="glitch-text" data-text="SAAD">SAAD</h1>
         <h2 class="role-text">Calculated Chaos // Creative Lead</h2>
     </div>
+<div class="funk-portrait-container">
+    <div class="glitch-wrapper">
+        <video class="intro-video" muted loop playsinline id="introVid">
+            <source src="assets/videos/clear.mp4" type="video/mp4"> </video>
+        
+        <div class="static-image" style="background-image: url('assets/images/placeholder-profile.jpg');"></div>
+    </div>
+</div>
 
+<script>
+    // Simple script to play video on hover
+    const portrait = document.querySelector('.funk-portrait-container');
+    const introVid = document.getElementById('introVid');
+
+    portrait.addEventListener('mouseenter', () => introVid.play());
+    portrait.addEventListener('mouseleave', () => introVid.pause());
+</script>
     <div class="about-dossier protected-text">
         <div class="dossier-header">
             <span class="status-dot"></span>
@@ -38,34 +54,44 @@
     </div>
 
 </header>
-        <div class="bento-container">
-            
-            <a href="projects/alpha.html" class="bento-item item-1">
-                <div class="content">
-                    <h3>Project Alpha</h3>
-                    <p>Cricket Analysis</p>
-                </div>
-            </a>
+       <div class="bento-container">
+    
+    <a href="projects/alpha.html" class="bento-item item-1">
+        <div class="content">
+            <h3>Alpha</h3>
+            <p>The Professional Dossier (CV)</p>
+        </div>
+    </a>
 
-            <a href="projects/beta.html" class="bento-item item-2">
-                <div class="content">
-                    <h3>Project Beta</h3>
-                </div>
-            </a>
+    <a href="projects/beta.html" class="bento-item item-2">
+        <div class="content">
+            <h3>Beta</h3>
+            <p>Figma Prototypes 🎨</p>
+        </div>
+    </a>
 
-            <a href="projects/gamma.html" class="bento-item item-3">
-                <div class="content">
-                    <h3>Project Gamma</h3>
-                </div>
-            </a>
+    <a href="projects/comedy.html" class="bento-item item-5">
+        <div class="content">
+            <h3>Live Set</h3>
+            <p>Standup Comedy 🎙️</p>
+        </div>
+    </a>
 
-            <a href="projects/delta.html" class="bento-item item-4">
-                <div class="content">
-                    <h3>Project Delta</h3>
-                </div>
-            </a>
-        </div> 
+    <a href="projects/gamma.html" class="bento-item item-3">
+        <div class="content">
+            <h3>Gamma</h3>
+            <p>Wattpad Stories 📖</p>
+        </div>
+    </a>
 
+    <a href="projects/delta.html" class="bento-item item-4">
+        <div class="content">
+            <h3>Delta</h3>
+            <p>Thread Quotes ✒️</p>
+        </div>
+    </a>
+
+</div>
         <section class="writing-section">
             <h2 style="color: white; margin-bottom: 20px;">My Written Pieces</h2>
             
