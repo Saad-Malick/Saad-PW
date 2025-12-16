@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap');
-/* Reset default browser spacing */
+
+/* --- 1. RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,120 +8,92 @@
 }
 
 body {
-    background-color: #050505; /* Dark mode base */
+    background-color: #050505; /* Deep Professional Black */
     color: #ffffff;
-    font-family: 'Inter' , sans-serif;
+    font-family: 'Inter', sans-serif;
 }
+
 h1, h2, h3 {
-    font-family: 'Space Grotesk', sans-serif; /* Bold headers */
-    letter-spacing: -0.5px; /* Tighter letters look more professional */
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.5px;
 }
 
-/* --- THE FUNK PORTRAIT --- */
-.funk-portrait-container {
-    position: relative;
-    width: 250px;
-    height: 300px;
-    margin: 0 30px; /* Space between title and bio */
-    
-    /* THE GUESS: A jagged, aggressive shard shape */
-    clip-path: polygon(10% 0, 100% 0, 90% 85%, 0% 100%);
-    
-    background: #000;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.funk-portrait-container:hover {
-    transform: scale(1.05) rotate(2deg); /* Tilted pop */
-}
-
-.glitch-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.intro-video {
-    width: 100%;
-    height: 100%;
+/* --- 2. VIDEO BACKGROUND (Optional for Pro) --- */
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Behind image */
-    filter: contrast(1.2) saturate(0); /* Black & white video feels cooler */
+    opacity: 0.4; /* Dimmed more for readability */
 }
 
-.static-image {
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: 2; /* On top */
-    
-    /* The Reveal Animation */
-    transition: opacity 0.4s ease-in-out;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for corporate feel */
+    z-index: -1;
 }
 
-/* Hover Effect: Image vanishes to reveal video */
-.funk-portrait-container:hover .static-image {
-    opacity: 0; 
-}
-
-/* --- HERO SECTION LAYOUT --- */
+/* --- 3. HERO SECTION (Cleaned Up) --- */
 .hero-section {
     max-width: 1100px;
-    margin: 80px auto 40px auto; /* Spacing from top */
+    margin: 60px auto 40px auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between; /* Pushes Title left, Bio right */
-    align-items: flex-end; /* Aligns them at the bottom */
-    flex-wrap: wrap; /* Wraps on mobile */
+    justify-content: space-between;
+    align-items: center; /* Centered alignment */
+    flex-wrap: wrap;
     gap: 40px;
 }
 
-/* --- THE TITLE (Massive) --- */
+/* The Title - Standardized */
 .title-block h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 8rem; /* HUGE text */
-    line-height: 0.9;
+    font-size: 5rem; /* Reduced from 8rem for modesty */
+    line-height: 1;
     font-weight: 700;
     color: white;
     text-transform: uppercase;
-    letter-spacing: -5px;
-    margin: 0;
-    
-    /* The "Glitch" Shadow effect */
-    text-shadow: 4px 4px 0px rgba(0, 100, 255, 0.4); 
+    letter-spacing: -2px;
+    margin-bottom: 10px;
 }
 
 .role-text {
     font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    color: #ccc;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: #aaa;
     text-transform: uppercase;
-    margin-top: 10px;
 }
 
-/* --- THE ABOUT DOSSIER (LinkedIn but Cool) --- */
+/* New "Safe" Portrait (Replaces Funk Portrait) */
+.pro-portrait {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Clean circle */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* The Bio Dossier - Simplified */
 .about-dossier {
-    flex: 1; /* Takes available space */
-    min-width: 300px; /* Won't get too squished */
+    flex: 1;
+    min-width: 300px;
     max-width: 450px;
-    
-    /* Glass Effect */
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 4px solid #ffffff; /* Stark white accent */
+    border-left: 4px solid #007bff; /* Corporate Blue Accent */
     padding: 25px;
-    border-radius: 4px; /* Sharper corners for a "technical" feel */
+    border-radius: 8px;
 }
 
 .dossier-header {
@@ -130,269 +103,123 @@ h1, h2, h3 {
     margin-bottom: 15px;
     font-size: 0.8rem;
     font-family: 'Space Grotesk', sans-serif;
-    color: #00ff66; /* Matrix Green for status */
+    color: #007bff;
 }
 
 .status-dot {
     width: 8px;
     height: 8px;
-    background-color: #00ff66;
+    background-color: #007bff; /* Blue dot */
     border-radius: 50%;
-    box-shadow: 0 0 10px #00ff66; /* Glowing dot */
 }
 
 .about-dossier p {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #e0e0e0;
+    color: #ddd;
     margin-bottom: 20px;
 }
 
-/* Links that look like terminal commands */
 .dossier-links a {
     display: inline-block;
     margin-right: 15px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.9rem;
-    color: #ffadad; /* Uses your Alpha Red */
+    color: white;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
-.dossier-links a:hover {
-    border-bottom: 1px solid #ffadad;
-    letter-spacing: 1px; /* Expands on hover */
-}
-
-/* --- MOBILE TWEAK --- */
-@media (max-width: 768px) {
-    .hero-section {
-        flex-direction: column; /* Stack them on phone */
-        align-items: flex-start;
-        margin-top: 40px;
-    }
-    .title-block h1 {
-        font-size: 5rem; /* Smaller on phone */
-    }
-}
-
-/* The Grid Container - UPDATED */
+/* --- 4. THE PRO GRID (3 Items Only) --- */
 .bento-container {
     display: grid;
-    /* 1. Squeeze it: Restrict the width */
-    max-width: 1100px; 
-    width: 90%; /* Keeps it responsive on smaller screens */
+    max-width: 1100px;
+    width: 90%;
+    margin: 50px auto;
+    height: 500px; /* Compact height */
     
-    /* 2. Center it: Top/Bottom margin 50px, Left/Right auto */
-    margin: 50px auto; 
-    
-    /* 3. Adjust Height: auto lets it grow if content grows, or stick to fixed */
-    height: 600px; /* Fixed height keeps the bento look clean */
-    
-    grid-template-columns: 50% 20% 30%;
+    /* THE SPLIT: 60% Left | 40% Right */
+    grid-template-columns: 60% 40%;
     grid-template-rows: 1fr 1fr;
-    gap: 15px; /* Increased gap looks better when centered */
+    gap: 20px;
 }
 
-/* UPDATED: Glass Base Style for All Items */
-
+/* Base Item Style - Clean Glass */
 .bento-item {
     position: relative;
     display: block;
     overflow: hidden;
     text-decoration: none;
     color: white;
-    
-    /* THE NEW GLASS EFFECT */
-    background: rgba(255, 255, 255, 0.05); /* Extremely clear glass */
-    backdrop-filter: blur(8px); /* Blurs the video behind the box */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin frost border */
-    border-radius: 12px;
-    
-    /* Animation & Layout */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
- 
-/* Departmental Colors (The "Calculated" part) */
-/* Item 1 (Alpha/Red) is handled by the video, so we leave it */
-
-/* UPDATED: Faint Tints (Letting the video show through) */
-
-/* Item 1 is handled by its own content or defaults to the clear glass above */
-
-.item-2 { 
-    background: rgba(0, 100, 255, 0.1); /* Faint Blue Tint */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px; /* Slightly sharper corners */
+    transition: all 0.3s ease;
 }
 
-.item-3 { 
-    background: rgba(0, 255, 100, 0.1); /* Faint Green Tint */
-}
-
-.item-4 { 
-    background: rgba(150, 0, 255, 0.1); /* Faint Purple Tint */
-}
-
-
-/* Hover and Click Effects */
-/* The Interaction */
+/* Hover Effect - Subtle Lift */
 .bento-item:hover {
-    transform: scale(1.02) translateY(-5px); /* Grows and floats up */
-    border-color: rgba(255, 255, 255, 0.4); /* Border gets brighter */
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); /* Adds a deep shadow */
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Specific Glows on Hover */
-.item-2:hover { box-shadow: 0 10px 30px -10px rgba(0, 100, 255, 0.3); } /* Blue Glow */
-.item-3:hover { box-shadow: 0 10px 30px -10px rgba(0, 255, 100, 0.3); } /* Green Glow */
-.item-4:hover { box-shadow: 0 10px 30px -10px rgba(150, 0, 255, 0.3); } /* Purple Glow */
-/* --- UPDATED GRID POSITIONING (5 Items) --- */
+/* --- GRID POSITIONS --- */
 
-/* Item 1: Big Left (Unchanged) */
+/* Item 1: Alpha (Resume) - Takes entire left side */
 .item-1 { 
     grid-column: 1; 
     grid-row: 1 / span 2; 
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
 }
 
-/* Item 2: Top Middle (Figma) */
+/* Item 2: Beta (Portfolio) - Top Right */
 .item-2 { 
     grid-column: 2; 
-    grid-row: 1; /* Now only takes top half */
-    background: rgba(0, 100, 255, 0.1); /* Blue tint */
-}
-
-/* Item 5: Bottom Middle (Comedy) - NEW */
-.item-5 { 
-    grid-column: 2; 
-    grid-row: 2; /* Takes bottom half */
-    background: rgba(255, 0, 50, 0.1); /* Red tint for the mic */
-}
-
-/* Item 3: Top Right (Wattpad) */
-.item-3 { 
-    grid-column: 3; 
     grid-row: 1; 
-    background: rgba(255, 165, 0, 0.1); /* Orange tint */
+    background: rgba(0, 123, 255, 0.1); /* Subtle Blue */
 }
 
-/* Item 4: Bottom Right (Threads) */
-.item-4 { 
-    grid-column: 3; 
+/* Item 3: Contact - Bottom Right (Replaces Comedy/Wattpad) */
+.item-3 { 
+    grid-column: 2; 
     grid-row: 2; 
-    background: rgba(0, 0, 0, 0.3); /* Dark tint */
+    background: rgba(40, 167, 69, 0.1); /* Subtle Green */
 }
 
-/* Add Hover Glow for Item 5 */
-.item-5:hover { box-shadow: 0 10px 30px -10px rgba(255, 0, 50, 0.4); }
-/* Video Background Magic */
-/* --- FULL PAGE VIDEO BACKGROUND --- */
-#bg-video {
-    position: fixed; /* Sticks to the screen */
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -2; /* Puts it way back */
-    object-fit: cover; /* Ensures no black bars */
-}
-
-/* Optional: Dark Overlay so text is readable on bright videos */
-.video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Adjust 0.6 to make it darker/lighter */
-    z-index: -1;
-}
-
-/* --- TRANSPARENT BENTO ITEMS --- */
-/* We update this so the video shines through the boxes */
-
-
-/* Content Positioning */
+/* Content Inside Boxes */
 .content {
     position: relative;
-    z-index: 2; /* Sits on top of video */
-    padding: 20px;
+    z-index: 2;
+    padding: 30px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Pushes text to bottom */
+    justify-content: flex-end;
 }
 
-
-/* The "Glass Case" - Prevents Text Selection */
+/* --- 5. UTILITIES --- */
 .protected-text {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-    cursor: default; /* Keeps the mouse pointer from changing to a text bar */
-}
-/* Writer's Portfolio Styling */
-.writing-section {
-    max-width: 800px; /* Reading width should be narrower for comfort */
-    margin: 50px auto; /* Center it below the bento */
-    padding: 20px;
-    color: #eee;
-}
-/* --- Writer's Section Styling --- */
-
-.writing-section {
-    max-width: 1100px; /* Matches the bento grid width */
-    margin: 50px auto;
-    padding: 0 10px; /* Aligns with grid padding */
+    user-select: none;
+    cursor: default;
 }
 
-.story-card {
-    /* Layout */
-    display: flex;
-    justify-content: space-between; /* Pushes "Read More" to the right */
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 25px;
-    
-    /* The "Writer's Glass" Look */
-    background: rgba(255, 255, 255, 0.03); /* Slightly darker than projects */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    
-    /* Text Styles */
-    color: #ccc; /* Softer text for reading */
-    text-decoration: none;
-    
-    /* Animation setup */
-    transition: all 0.3s ease;
-    border-left: 4px solid #ffca3a; /* Gold Accent for Writing */
-}
-
-.story-card h3 {
-    color: white;
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-}
-
-.read-more {
-    font-size: 0.9rem;
-    color: #ffca3a; /* Match the accent */
-    font-weight: 600;
-    opacity: 0; /* Hidden by default */
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
-}
-
-/* --- The Hover Interaction --- */
-
-.story-card:hover {
-    background: linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(255, 202, 58, 0.05));
-    transform: translateX(5px); /* Slides slightly to the right */
-    border-color: rgba(255, 202, 58, 0.3);
-}
-
-.story-card:hover .read-more {
-    opacity: 1; /* Show the arrow */
-    transform: translateX(0); /* Slide it into place */
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .title-block h1 {
+        font-size: 3.5rem;
+    }
+    .bento-container {
+        display: flex;
+        flex-direction: column; /* Stack items */
+        height: auto;
+    }
+    .bento-item {
+        min-height: 200px;
+    }
 }
